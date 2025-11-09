@@ -11,5 +11,9 @@ namespace FinancialControl.Services.Services
             _transactions.Add(transaction);
             return transaction;
         }
+
+        public List<Transaction> GetTransactions() { 
+        return _transactions;
+        }
     }
 }

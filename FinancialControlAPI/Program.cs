@@ -1,4 +1,7 @@
 
+using FinancialControl.Services.Services;
+using FinancialControl.Services.Services.Interfaces;
+
 namespace FinancialControlAPI
 {
     public class Program
@@ -13,6 +16,7 @@ namespace FinancialControlAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddSingleton<ITransactionService, TransactionService>();
 
             var app = builder.Build();
 

@@ -22,5 +22,12 @@ namespace FinancialControlAPI.Controllers
             var transactionCreated = _transactionService.Add(transaction);
             return Ok(transactionCreated);
         }
+
+        [HttpGet]
+        public IActionResult GetTransactions()
+        {
+            List<Transaction> transactions = _transactionService.GetTransactions();
+            return Ok(transactions);
+        }
     }
 }
