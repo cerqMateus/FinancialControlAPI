@@ -16,7 +16,7 @@ namespace FinancialControlAPI.Controllers
         {
             _transactionService = transactionService;
         }
-            
+
         [HttpPost]
         public IActionResult Create([FromBody] CreatedTransactionDTO transaction)
         {
@@ -74,7 +74,19 @@ namespace FinancialControlAPI.Controllers
             {
                 return NotFound(ex.Message);
             }
-
+        }
+        [HttpGet("/balance")]
+        public IActionResult GetBalance()
+        {
+            try
+            {
+                double balance = _transactionService.GetBalance();
+                return Ok(balance);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
 
         }
     }
