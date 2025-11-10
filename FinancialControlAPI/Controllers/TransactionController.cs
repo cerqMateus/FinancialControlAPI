@@ -20,8 +20,17 @@ namespace FinancialControlAPI.Controllers
         [HttpPost]
         public IActionResult Create([FromBody] CreatedTransactionDTO transaction)
         {
-            var transactionCreated = _transactionService.Add(transaction);
-            return Ok(transactionCreated);
+            try
+            {
+                var transactionCreated = _transactionService.Add(transaction);
+                return Ok(transactionCreated);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+
         }
 
         [HttpGet]
