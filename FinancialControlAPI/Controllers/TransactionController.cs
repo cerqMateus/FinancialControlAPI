@@ -80,7 +80,7 @@ namespace FinancialControlAPI.Controllers
         {
             try
             {
-                double balance = _transactionService.GetBalance();
+                decimal balance = _transactionService.GetBalance();
                 return Ok(balance);
             }
             catch (InvalidOperationException ex)

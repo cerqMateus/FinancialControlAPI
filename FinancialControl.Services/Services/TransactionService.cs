@@ -47,10 +47,10 @@ namespace FinancialControl.Services.Services
             return transactionsByType;
         }
 
-        public double GetBalance()
+        public decimal GetBalance()
         {
             int totalInCents = _transactions.Sum(t => t.AmountInCents);
-            double total = totalInCents / 100;
+            decimal total = totalInCents/100.0m;
             if (total == 0)
             {
                 throw new InvalidOperationException("Não existe nenhuma transação registrada até o momento.");
