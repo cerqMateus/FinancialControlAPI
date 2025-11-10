@@ -26,5 +26,16 @@ namespace FinancialControl.Services.Services
             }
         return _transactions;
         }
+
+        public Transaction GetTransactionById(int id)
+        {
+            Transaction transaction = _transactions.FirstOrDefault(t=> t.Id == id);
+            if(transaction == null)
+            {
+                throw new InvalidOperationException("Transação não encontrada");
+            }
+            return transaction;
+        }
+
     }
 }

@@ -46,5 +46,20 @@ namespace FinancialControlAPI.Controllers
                 return NotFound(ex.Message);
             }
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetTransactionById(int id)
+        {
+            try
+            {
+                Transaction transaction = _transactionService.GetTransactionById(id);
+                return Ok(transaction);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+
+        }
     }
 }
