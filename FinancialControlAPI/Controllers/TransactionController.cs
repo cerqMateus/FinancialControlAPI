@@ -1,4 +1,5 @@
-﻿using FinancialControl.Models.Entities;
+﻿using FinancialControl.Models.DTOs;
+using FinancialControl.Models.Entities;
 using FinancialControl.Services.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +18,7 @@ namespace FinancialControlAPI.Controllers
         }
             
         [HttpPost]
-        public IActionResult Create([FromBody] Transaction transaction)
+        public IActionResult Create([FromBody] CreatedTransactionDTO transaction)
         {
             var transactionCreated = _transactionService.Add(transaction);
             return Ok(transactionCreated);
@@ -27,7 +28,7 @@ namespace FinancialControlAPI.Controllers
         public IActionResult GetTransactions()
         {
             List<Transaction> transactions = _transactionService.GetTransactions();
-            return Ok(transactions);
+            return Ok(transactions);    
         }
     }
 }
