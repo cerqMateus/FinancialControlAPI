@@ -89,5 +89,19 @@ namespace FinancialControlAPI.Controllers
             }
 
         }
+
+        [HttpGet("/balance/type/{type}")]
+        public IActionResult GetBalanceByType(string type)
+        {
+            try
+            {
+                decimal balance = _transactionService.GetBalanceByType(type);
+                return Ok(balance);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+        }
     }
 }

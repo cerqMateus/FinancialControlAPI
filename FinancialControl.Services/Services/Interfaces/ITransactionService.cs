@@ -11,5 +11,6 @@ namespace FinancialControl.Services.Services.Interfaces
         Transaction GetTransactionById(int id);
         List<Transaction> GetTransactionsByType(string type);
         decimal GetBalance();
+        decimal GetBalanceByType(string type);
     }
 }

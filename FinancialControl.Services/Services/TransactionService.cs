@@ -57,5 +57,17 @@ namespace FinancialControl.Services.Services
             }    
             return total;
         }
+
+        public decimal GetBalanceByType(string type)
+        {
+            int totalInCents = _transactions.Where(t => t.Type.Equals(type)).Sum(t => t.AmountInCents);
+            decimal total = totalInCents / 100.0m;
+            if (total == 0)
+            {
+                throw new InvalidOperationException($"Não existe nenhuma transação  do tipo {type}registrada até o momento.");
+            }
+            return total;
+        }
+
     }
 }
