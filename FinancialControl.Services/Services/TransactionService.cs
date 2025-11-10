@@ -19,7 +19,11 @@ namespace FinancialControl.Services.Services
             return newTransaction;
         }
 
-        public List<Transaction> GetTransactions() { 
+        public List<Transaction> GetTransactions() {
+            if (!_transactions.Any())
+            {
+                throw new InvalidOperationException("Não existe nenhuma transação registrada até o momento.");
+            }
         return _transactions;
         }
     }
