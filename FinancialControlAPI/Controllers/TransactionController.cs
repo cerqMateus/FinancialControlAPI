@@ -61,5 +61,21 @@ namespace FinancialControlAPI.Controllers
             }
 
         }
+
+        [HttpGet("/type/{type}")]
+        public IActionResult GetTransactionsByType(string type)
+        {
+            try
+            {
+                List<Transaction> transactionsById = _transactionService.GetTransactionsByType(type);
+                return Ok(transactionsById);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(ex.Message);
+            }
+
+
+        }
     }
 }

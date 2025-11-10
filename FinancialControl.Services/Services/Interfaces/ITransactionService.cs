@@ -9,7 +9,6 @@ namespace FinancialControl.Services.Services.Interfaces
         Transaction Add(CreatedTransactionDTO transaction);
         List<Transaction> GetTransactions();
         Transaction GetTransactionById(int id);
-
-      
+        List<Transaction> GetTransactionsByType(string type);
     }
 }
